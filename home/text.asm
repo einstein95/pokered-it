@@ -199,11 +199,11 @@ MonsterNameCharsCommon::
 
 .Enemy
 	; print “Enemy ”
-	ld de,Char5AText
+	ld de,wEnemyMonNick
 	call PlaceString
 	ld h,b
 	ld l,c
-	ld de,wEnemyMonNick ; enemy active monster name
+	ld de,Char5AText
 
 FinishDTE::
 	call PlaceString
@@ -213,22 +213,22 @@ FinishDTE::
 	inc de
 	jp PlaceNextChar
 
-Char5CText::
-	db "TM@"
-Char5DText::
-	db "TRAINER@"
 Char5BText::
 	db "PC@"
 Char5EText::
 	db "ROCKET@"
-Char54Text::
-	db "POKé@"
 Char56Text::
 	db "……@"
-Char5AText::
-	db "Enemy @"
 Char4AText::
-	db $E1,$E2,"@" ; PKMN
+	db $E1,$E2,"@"
+Char5CText::
+	db "TM@"
+Char5DText::
+	db "TRAINER@"
+Char54Text::
+	db "POKé@"
+Char5AText::
+	db "Gegn. @"
 
 Char55::
 	push de

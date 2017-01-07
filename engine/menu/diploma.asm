@@ -83,31 +83,30 @@ UnusedPlayerNameLengthFunc:
 
 DiplomaTextPointersAndCoords:
 	dw DiplomaText
-	dwCoord 5, 2
-	dw DiplomaPlayer
-	dwCoord 3, 4
-	dw DiplomaEmptyText
-	dwCoord 15, 4
-	dw DiplomaCongrats
+	dwCoord 6, 2
+	dw DiplomaPlayer1
+	dwCoord 2, 4
+	dw DiplomaPlayer2
 	dwCoord 2, 6
+	dw DiplomaCongrats
+	dwCoord 2, 8
 	dw DiplomaGameFreak
 	dwCoord 9, 16
 
 DiplomaText:
-	db $70,"Diploma",$70,"@"
+	db $70,"Diplom",$70,"@"
 
-DiplomaPlayer:
-	db "Player@"
+DiplomaPlayer1:
+	db "Herzlichen Glück-@"
 
-DiplomaEmptyText:
-	db "@"
+DiplomaPlayer2:
+	db "wunsch         !@"
 
 DiplomaCongrats:
-	db   "Congrats! This"
-	next "diploma certifies"
-	next "that you have"
-	next "completed your"
-	next "#DEX.@"
+	db "Du hast es ge-"
+	next "schafft, den"
+	next "#DEX zu"
+	next "vervollständigen@"
 
 DiplomaGameFreak:
 	db "GAME FREAK@"

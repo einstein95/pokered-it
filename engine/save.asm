@@ -171,7 +171,7 @@ SaveSAV:
 	jp DelayFrames
 
 NowSavingString:
-	db "Now saving...@"
+	db "Speichern...@"
 
 SaveSAVConfirm:
 	call PrintText
@@ -441,14 +441,14 @@ DisplayChangeBoxMenu:
 	call TextBoxBorder
 	ld hl, ChooseABoxText
 	call PrintText
-	coord hl, 11, 0
+	coord hl, 9, 0
 	ld b, 12
 	ld c, 7
 	call TextBoxBorder
 	ld hl, hFlags_0xFFF6
 	set 2, [hl]
 	ld de, BoxNames
-	coord hl, 13, 1
+	coord hl, 11, 1
 	call PlaceString
 	ld hl, hFlags_0xFFF6
 	res 2, [hl]
@@ -457,7 +457,7 @@ DisplayChangeBoxMenu:
 	cp 9
 	jr c, .singleDigitBoxNum
 	sub 9
-	coord hl, 8, 2
+	coord hl, 6, 2
 	ld [hl], "1"
 	add "0"
 	jr .next
@@ -508,7 +508,7 @@ BoxNames:
 	next "BOX12@"
 
 BoxNoText:
-	db "BOX No.@"
+	db "BOX Nr.@"
 
 EmptyAllSRAMBoxes:
 ; marks all boxes in SRAM as empty (initialisation for the first time the

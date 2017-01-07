@@ -2120,12 +2120,12 @@ DisplayBattleMenu:
 	ld bc, NAME_LENGTH
 	call CopyData
 ; the following simulates the keystrokes by drawing menus on screen
-	coord hl, 9, 14
+	coord hl, 7, 14
 	ld [hl], "▶"
 	ld c, 80
 	call DelayFrames
 	ld [hl], " "
-	coord hl, 9, 16
+	coord hl, 7, 16
 	ld [hl], "▶"
 	ld c, 50
 	call DelayFrames
@@ -2133,7 +2133,7 @@ DisplayBattleMenu:
 	ld a, $2 ; select the "ITEM" menu
 	jp .upperLeftMenuItemWasNotSelected
 .oldManName
-	db "OLD MAN@"
+	db "GREIS@"
 .handleBattleMenuInput
 	ld a, [wBattleAndStartSavedMenuItem]
 	ld [wCurrentMenuItem], a
@@ -2150,13 +2150,13 @@ DisplayBattleMenu:
 	ld a, " "
 	jr z, .safariLeftColumn
 ; put cursor in left column for normal battle menu (i.e. when it's not a Safari battle)
-	Coorda 15, 14 ; clear upper cursor position in right column
-	Coorda 15, 16 ; clear lower cursor position in right column
-	ld b, $9 ; top menu item X
+	Coorda 12, 14 ; clear upper cursor position in right column
+	Coorda 12, 16 ; clear lower cursor position in right column
+	ld b, $7 ; top menu item X
 	jr .leftColumn_WaitForInput
 .safariLeftColumn
-	Coorda 13, 14
-	Coorda 13, 16
+	Coorda 12, 14
+	Coorda 12, 16
 	coord hl, 7, 14
 	ld de, wNumSafariBalls
 	lb bc, 1, 2
@@ -2183,9 +2183,9 @@ DisplayBattleMenu:
 	ld a, " "
 	jr z, .safariRightColumn
 ; put cursor in right column for normal battle menu (i.e. when it's not a Safari battle)
-	Coorda 9, 14 ; clear upper cursor position in left column
-	Coorda 9, 16 ; clear lower cursor position in left column
-	ld b, $f ; top menu item X
+	Coorda 7, 14 ; clear upper cursor position in left column
+	Coorda 7, 16 ; clear lower cursor position in left column
+	ld b, $c ; top menu item X
 	jr .rightColumn_WaitForInput
 .safariRightColumn
 	Coorda 1, 14 ; clear upper cursor position in left column
@@ -2194,7 +2194,7 @@ DisplayBattleMenu:
 	ld de, wNumSafariBalls
 	lb bc, 1, 2
 	call PrintNumber
-	ld b, $d ; top menu item X
+	ld b, $c ; top menu item X
 .rightColumn_WaitForInput
 	ld hl, wTopMenuItemY
 	ld a, $e
@@ -2326,7 +2326,7 @@ UseBagItem:
 	ld a, [wcf91]
 	ld [wd11e], a
 	call GetItemName
-	call CopyStringToCF4B ; copy name
+	call CopyStringToCF50 ; copy name
 	xor a
 	ld [wPseudoItemID], a
 	call UseItem
@@ -2765,7 +2765,8 @@ MoveDisabledText:
 	db "@"
 
 WhichTechniqueString:
-	db "WHICH TECHNIQUE?@"
+	db "Welche attacke?"
+	next "                 @"
 
 SelectMenuItem_CursorUp:
 	ld a, [wCurrentMenuItem]
@@ -2985,10 +2986,10 @@ PrintMenuItem:
 	jp Delay3
 
 DisabledText:
-	db "disabled!@"
+	db "BLOCKIERT@"
 
 TypeText:
-	db "TYPE@"
+	db "TYP@"
 
 SelectEnemyMove:
 	ld a, [wLinkState]
@@ -3631,7 +3632,7 @@ CheckPlayerStatusConditions:
 	ld a, RAGE
 	ld [wd11e], a
 	call GetMoveName
-	call CopyStringToCF4B
+	call CopyStringToCF50
 	xor a
 	ld [wPlayerMoveEffect], a
 	ld hl, PlayerCanExecuteMove
@@ -3833,7 +3834,7 @@ PrintMoveName:
 	ret
 
 _PrintMoveName:
-	TX_FAR _CF4BText
+	TX_FAR _CF50Text
 	TX_ASM
 	ld hl, ExclamationPointPointerTable
 	ld a, [wd11e] ; exclamation point num
@@ -5215,7 +5216,7 @@ ReloadMoveData:
 	call IncrementMovePP
 ; the follow two function calls are used to reload the move name
 	call GetMoveName
-	call CopyStringToCF4B
+	call CopyStringToCF50
 	ld a,$01
 	and a
 	ret
@@ -5716,7 +5717,7 @@ EnemyCanExecuteChargingMove:
 	ld [wNameListType], a
 	call GetName
 	ld de, wcd6d
-	call CopyStringToCF4B
+	call CopyStringToCF50
 EnemyCanExecuteMove:
 	xor a
 	ld [wMonIsDisobedient], a
@@ -6153,7 +6154,7 @@ CheckEnemyStatusConditions:
 	ld a, RAGE
 	ld [wd11e], a
 	call GetMoveName
-	call CopyStringToCF4B
+	call CopyStringToCF50
 	xor a
 	ld [wEnemyMoveEffect], a
 	ld hl, EnemyCanExecuteMove
@@ -6195,7 +6196,7 @@ GetCurrentMove:
 	ld [wNameListType], a
 	call GetName
 	ld de, wcd6d
-	jp CopyStringToCF4B
+	jp CopyStringToCF50
 
 LoadEnemyMonData:
 	ld a, [wLinkState]
@@ -6906,15 +6907,19 @@ InitWildBattle:
 	ld [hli], a   ; write front sprite pointer
 	ld [hl], b
 	ld hl, wEnemyMonNick  ; set name to "GHOST"
-	ld a, "G"
-	ld [hli], a
-	ld a, "H"
-	ld [hli], a
-	ld a, "O"
-	ld [hli], a
 	ld a, "S"
 	ld [hli], a
+	ld a, "P"
+	ld [hli], a
+	ld a, "E"
+	ld [hli], a
+	ld a, "C"
+	ld [hli], a
 	ld a, "T"
+	ld [hli], a
+	ld a, "R"
+	ld [hli], a
+	ld a, "E"
 	ld [hli], a
 	ld [hl], "@"
 	ld a, [wcf91]
@@ -7953,17 +7958,17 @@ PrintStatText:
 	jr z, .findStatName_outer
 	jr .findStatName_inner
 .foundStatName
-	ld de, wcf4b
+	ld de, wcf50
 	ld bc, $a
 	jp CopyData
 
 StatsTextStrings:
-	db "ATTACK@"
-	db "DEFENSE@"
-	db "SPEED@"
-	db "SPECIAL@"
-	db "ACCURACY@"
-	db "EVADE@"
+	db "FOR@"
+	db "DEF@"
+	db "VIT@"
+	db "SPE@"
+	db "PRE@"
+	db "ESQ@"
 
 StatModifierRatios:
 ; first byte is numerator, second byte is denominator

@@ -39,7 +39,7 @@ AskName:
 	pop hl
 	pop af
 	ld [wUpdateSpritesEnabled], a
-	ld a, [wcf4b]
+	ld a, [wcf50]
 	cp "@"
 	ret nz
 .declinedNickname
@@ -63,7 +63,7 @@ DisplayNameRaterScreen:
 	call GBPalWhiteOutWithDelay3
 	call RestoreScreenTilesAndReloadTilePatterns
 	call LoadGBPal
-	ld a, [wcf4b]
+	ld a, [wcf50]
 	cp "@"
 	jr z, .playerCancelled
 	ld hl, wPartyMonNicks
@@ -109,7 +109,7 @@ DisplayNamingScreen:
 	ld a, 7
 	ld [wMaxMenuItem], a
 	ld a, "@"
-	ld [wcf4b], a
+	ld [wcf50], a
 	xor a
 	ld hl, wNamingScreenSubmitName
 	ld [hli], a
@@ -157,7 +157,7 @@ DisplayNamingScreen:
 
 .submitNickname
 	pop de
-	ld hl, wcf4b
+	ld hl, wcf50
 	ld bc, NAME_LENGTH
 	call CopyData
 	call GBPalWhiteOutWithDelay3
@@ -324,12 +324,15 @@ DisplayNamingScreen:
 	jp EraseMenuCursor
 
 LoadEDTile:
-	ld de, ED_Tile
-	ld hl, vFont + $700
-	ld bc, (ED_TileEnd - ED_Tile) / $8
+	call DisableLCD
+	ld de, vFont + $700
+	ld hl, ED_Tile
+	ld bc, (ED_TileEnd - ED_Tile)
 	; to fix the graphical bug on poor emulators
-	;lb bc, BANK(ED_Tile), (ED_TileEnd - ED_Tile) / $8
-	jp CopyVideoDataDouble
+	;lb bc, BANK(ED_Tile), (ED_TileEnd - ED_Tile)
+	ld a,$01
+	call FarCopyDataDouble
+	jp EnableLCD
 
 ED_Tile:
 	INCBIN "gfx/ED_tile.1bpp"
@@ -366,10 +369,10 @@ PrintAlphabet:
 	jp Delay3
 
 LowerCaseAlphabet:
-	db "abcdefghijklmnopqrstuvwxyz ×():;[]",$e1,$e2,"-?!♂♀/⠄,¥UPPER CASE@"
+	db "abcdefghijklmnopqrstuvwxyz ×():;[]",$e1,$e2,"-?!♂♀/⠄,¥MAJUSCULES@"
 
 UpperCaseAlphabet:
-	db "ABCDEFGHIJKLMNOPQRSTUVWXYZ ×():;[]",$e1,$e2,"-?!♂♀/⠄,¥lower case@"
+	db "ABCDEFGHIJKLMNOPQRSTUVWXYZ ×():;[]",$e1,$e2,"-?!♂♀/⠄,¥minuscules@"
 
 PrintNicknameAndUnderscores:
 	call CalcStringLength
@@ -379,7 +382,7 @@ PrintNicknameAndUnderscores:
 	lb bc, 1, 10
 	call ClearScreenArea
 	coord hl, 10, 2
-	ld de, wcf4b
+	ld de, wcf50
 	call PlaceString
 	coord hl, 10, 3
 	ld a, [wNamingScreenType]
@@ -455,9 +458,9 @@ Handakutens:
 	db "ハパ", "ヒピ", "フプ", "へぺ", "ホポ"
 	db $ff
 
-; calculates the length of the string at wcf4b and stores it in c
+; calculates the length of the string at wcf50 and stores it in c
 CalcStringLength:
-	ld hl, wcf4b
+	ld hl, wcf50
 	ld c, $0
 .loop
 	ld a, [hl]
@@ -472,10 +475,10 @@ PrintNamingText:
 	ld a, [wNamingScreenType]
 	ld de, YourTextString
 	and a
-	jr z, .notNickname
+	jr z, .placeString
 	ld de, RivalsTextString
 	dec a
-	jr z, .notNickname
+	jr z, .placeString
 	ld a, [wcf91]
 	ld [wMonPartySpriteSpecies], a
 	push af
@@ -485,28 +488,21 @@ PrintNamingText:
 	call GetMonName
 	coord hl, 4, 1
 	call PlaceString
-	ld hl, $1
-	add hl, bc
-	ld [hl], $c9
-	coord hl, 1, 3
-	ld de, NicknameTextString
+	ld hl, $C3DD
+	ld de, $69F2
 	jr .placeString
-.notNickname
-	call PlaceString
-	ld l, c
-	ld h, b
-	ld de, NameTextString
+
 .placeString
 	jp PlaceString
 
 YourTextString:
-	db "YOUR @"
+	db "VOTRE NOM?@"
 
 RivalsTextString:
-	db "RIVAL's @"
+	db "NOM DU RIVAL?@"
 
 NameTextString:
-	db "NAME?@"
+	db "NOM?@"
 
 NicknameTextString:
-	db "NICKNAME?@"
+	db "SURNOM?@"

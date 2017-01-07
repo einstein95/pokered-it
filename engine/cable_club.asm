@@ -290,7 +290,7 @@ CableClub_DoBattleOrTradeAgain:
 	jr CallCurrentTradeCenterFunction
 
 PleaseWaitString:
-	db "PLEASE WAIT!@"
+	db "ATTENDEZ SVP@"
 
 CallCurrentTradeCenterFunction:
 	ld hl, TradeCenterPointerTable
@@ -533,7 +533,7 @@ TradeCenter_SelectMon:
 	ld [wTradeCenterPointerTableIndex], a
 	jp CallCurrentTradeCenterFunction
 .statsTrade
-	db "STATS     TRADE@"
+	db "STATS     ECHANGE@"
 .selectedCancelMenuItem
 	ld a, [wCurrentMenuItem]
 	ld b, a
@@ -596,9 +596,9 @@ ReturnToCableClubRoom:
 	ret
 
 TradeCenter_DrawCancelBox:
-	coord hl, 11, 15
+	coord hl, 8, 15
 	ld a, $7e
-	ld bc, 2 * SCREEN_WIDTH + 9
+	ld bc, 2 * SCREEN_WIDTH + 12
 	call FillMemory
 	coord hl, 0, 15
 	ld b, 1
@@ -609,7 +609,7 @@ TradeCenter_DrawCancelBox:
 	jp PlaceString
 
 CancelTextString:
-	db "CANCEL@"
+	db "ANNULER@"
 
 TradeCenter_PlaceSelectedEnemyMonMenuCursor:
 	ld a, [wSerialSyncAndExchangeNybbleReceiveData]
@@ -712,8 +712,8 @@ TradeCenter_Trade:
 	coord bc, 1, 14
 	call TextCommandProcessor
 	call SaveScreenTilesToBuffer1
-	coord hl, 10, 7
-	lb bc, 8, 11
+	coord hl, 9, 7
+	lb bc, 8, 10
 	ld a, TRADE_CANCEL_MENU
 	ld [wTwoOptionMenuID], a
 	ld a, TWO_OPTION_MENU
@@ -876,11 +876,11 @@ WillBeTradedText:
 	db "@"
 
 TradeCompleted:
-	db "Trade completed!@"
+	db "ECHANGE TERMINE!@"
 
 TradeCanceled:
-	db   "Too bad! The trade"
-	next "was canceled!@"
+	db   "Dommage! L'échange"
+	next "est annulé!@"
 
 TradeCenterPointerTable:
 	dw TradeCenter_SelectMon

@@ -1,19 +1,21 @@
-# Pokémon Red and Blue
+# Pokémon: Rote Edition and Blaue Edition
 
-This is a disassembly of Pokémon Red and Blue.
+This is a disassembly of Pokémon: Rote Edition and Blaue Edition.
 
 It builds the following roms:
 
-* Pokemon Red (UE) [S][!].gb  `md5: 3d45c1ee9abd5738df46d2bdda8b57dc`
-* Pokemon Blue (UE) [S][!].gb `md5: 50927e843568814f7ed45ec4f944bd8b`
+* Pokemon - Rote Edition (G) [S][!].gb  `md5: 8ed0e8d45a81ca34de625d930148a512`
+* Pokemon - Blaue Edition (G) [S][!].gb  `md5: a1ec7f07c7b4251d5fafc50622d546f8`
 
 To set up the repository, see [**INSTALL.md**](INSTALL.md).
 
 
 ## See also
 
+* Disassembly of [**Pokémon Red & Blue**][pokered]
 * Disassembly of [**Pokémon Crystal**][pokecrystal]
 * irc: **irc.freenode.net** [**#pret**][irc]
 
+[pokered]: https://github.com/pret/pokered
 [pokecrystal]: https://github.com/kanzure/pokecrystal
 [irc]: https://kiwiirc.com/client/irc.freenode.net/?#pret

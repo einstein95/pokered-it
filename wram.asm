@@ -1318,6 +1318,8 @@ wAIItem:: ; cf05
 wUsedItemOnWhichPokemon:: ; cf05
 	ds 1
 
+	ds 5
+
 wAnimSoundID:: ; cf07
 ; sound ID during battle animations
 	ds 1
@@ -1429,7 +1431,7 @@ wExpAmountGained:: ; cf4b
 ; 2-byte big-endian number
 ; the total amount of exp a mon gained
 
-wcf4b:: ds 2 ; storage buffer for various strings
+wcf50:: ds 2 ; storage buffer for various strings
 
 wGainBoostedExp:: ; cf4d
 	ds 1
@@ -1607,10 +1609,11 @@ wEnemyMonLevel::     db
 wEnemyMonMaxHP::     dw
 wEnemyMonAttack::    dw
 wEnemyMonDefense::   dw
-wEnemyMonSpeed::     dw
+wEnemyMonSpeed::     ds 1
+SECTION "WRAM Bank 1", WRAMX, BANK[1]
+                     ds 1
 wEnemyMonSpecial::   dw
 wEnemyMonPP::        ds 2 ; NUM_MOVES - 2
-SECTION "WRAM Bank 1", WRAMX, BANK[1]
                      ds 2 ; NUM_MOVES - 2
 
 wEnemyMonBaseStats:: ds 5
@@ -3117,7 +3120,9 @@ wSecondLockTrashCanIndex:: ; d743
 
 	ds 2
 wEventFlags:: ; d747
-	ds 320
+	ds 73
+wd795::
+	ds 247
 
 wLinkEnemyTrainerName:: ; d887
 ; linked game's trainer name

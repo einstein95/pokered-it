@@ -106,14 +106,14 @@ LeaguePCShowMon:
 	coord hl, 1, 15
 	ld de, HallOfFameNoText
 	call PlaceString
-	coord hl, 16, 15
+	coord hl, 15, 15
 	ld de, wHoFTeamNo
 	lb bc, 1, 3
 	call PrintNumber
 	jpba HoFDisplayMonInfo
 
 HallOfFameNoText:
-	db "HALL OF FAME No   @"
+	db "RUHMESHALLE Nr.@"
 
 AccessedHoFPCText:
 	TX_FAR _AccessedHoFPCText

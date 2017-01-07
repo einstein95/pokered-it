@@ -162,28 +162,28 @@ TextBoxCoordTable:
 TextBoxTextAndCoordTable:
 	db JP_MOCHIMONO_MENU_TEMPLATE
 	db 0,0,14,17   ; text box coordinates
-	dw JapaneseMochimonoText
+	dw BuySellQuitText ; JapaneseMochimonoText
 	db 3,0   ; text coordinates
 
 	db USE_TOSS_MENU_TEMPLATE
-	db 13,10,19,14 ; text box coordinates
+	db 12,10,19,14 ; text box coordinates
 	dw UseTossText
-	db 15,11 ; text coordinates
+	db 14,11 ; text coordinates
 
 	db JP_SAVE_MESSAGE_MENU_TEMPLATE
 	db 0,0,7,5     ; text box coordinates
-	dw JapaneseSaveMessageText
+	dw BuySellQuitText ; JapaneseSaveMessageText
 	db 2,2   ; text coordinates
 
 	db JP_SPEED_OPTIONS_MENU_TEMPLATE
 	db 0,6,5,10    ; text box coordinates
-	dw JapaneseSpeedOptionsText
+	dw BuySellQuitText ; JapaneseSpeedOptionsText
 	db 2,7   ; text coordinates
 
 	db BATTLE_MENU_TEMPLATE
-	db 8,12,19,17  ; text box coordinates
+	db 6,12,19,17  ; text box coordinates
 	dw BattleMenuText
-	db 10,14 ; text coordinates
+	db 8,14 ; text coordinates
 
 	db SAFARI_BATTLE_MENU_TEMPLATE
 	db 0,12,19,17  ; text box coordinates
@@ -197,7 +197,7 @@ TextBoxTextAndCoordTable:
 
 	db BUY_SELL_QUIT_MENU_TEMPLATE
 	db 0,0,10,6    ; text box coordinates
-	dw BuySellQuitText
+	dw BuySellQuitText + 1
 	db 2,1   ; text coordinates
 
 	db MONEY_BOX_TEMPLATE
@@ -207,64 +207,40 @@ TextBoxTextAndCoordTable:
 
 	db JP_AH_MENU_TEMPLATE
 	db 7,6,11,10   ; text box coordinates
-	dw JapaneseAhText
+	dw BuySellQuitText ; JapaneseAhText
 	db 8,8   ; text coordinates
 
 	db JP_POKEDEX_MENU_TEMPLATE
 	db 11,8,19,17  ; text box coordinates
-	dw JapanesePokedexMenu
+	dw BuySellQuitText ; JapanesePokedexMenu
 	db 12,10 ; text coordinates
 
 ; note that there is no terminator
 
 BuySellQuitText:
-	db   "BUY"
-	next "SELL"
-	next "QUIT@@"
+	db   "@KAUF"
+	next "VERKAUF"
+	next "TSCHÜSS!@"
 
 UseTossText:
-	db   "USE"
-	next "TOSS@"
-
-JapaneseSaveMessageText:
-	db   "きろく"
-	next "メッセージ@"
-
-JapaneseSpeedOptionsText:
-	db   "はやい"
-	next "おそい@"
+	db   "OK"
+	next "MÜLL@"
 
 MoneyText:
-	db "MONEY@"
-
-JapaneseMochimonoText:
-	db "もちもの@"
-
-JapaneseMainMenuText:
-	db   "つづきから"
-	next "さいしょから@"
+	db "GELD@"
 
 BattleMenuText:
-	db   "FIGHT ",$E1,$E2
-	next "ITEM  RUN@"
+	db   "KMPF ",$E1,$E2
+	next "ITEM FLUCHT@"
 
 SafariZoneBattleMenuText:
-	db   "BALL×       BAIT"
-	next "THROW ROCK  RUN@"
+	db   "BALL×      KÖDER"
+	next "STEIN      FLUCHT@"
 
 SwitchStatsCancelText:
-	db   "SWITCH"
-	next "STATS"
-	next "CANCEL@"
-
-JapaneseAhText:
-	db "アッ!@"
-
-JapanesePokedexMenu:
-	db   "データをみる"
-	next "なきごえ"
-	next "ぶんぷをみる"
-	next "キャンセル@"
+	db   "TAUSCH"
+	next "STATUS"
+	next "ZURÜCK@"
 
 DisplayMoneyBox:
 	ld hl, wd730
@@ -278,14 +254,11 @@ DisplayMoneyBox:
 	call ClearScreenArea
 	coord hl, 12, 1
 	ld de, wPlayerMoney
-	ld c, $a3
+	ld c, "d"
 	call PrintBCDNumber
 	ld hl, wd730
 	res 6, [hl]
 	ret
-
-CurrencyString:
-	db "      ¥@"
 
 DoBuySellQuitMenu:
 	ld a, [wd730]
@@ -532,19 +505,13 @@ TwoOptionMenuStrings:
 	dw .YesNoMenu
 	db 6,3,0
 	dw .NorthEastMenu
-	db 7,3,0
+	db 8,3,0
 	dw .TradeCancelMenu
 	db 7,4,1
 	dw .HealCancelMenu
 	db 4,3,0
 	dw .NoYesMenu
 
-.NoYesMenu
-	db   "NO"
-	next "YES@"
-.YesNoMenu
-	db   "YES"
-	next "NO@"
 .NorthWestMenu
 	db   "NORTH"
 	next "WEST@"
@@ -554,12 +521,18 @@ TwoOptionMenuStrings:
 .NorthEastMenu
 	db   "NORTH"
 	next "EAST@"
+.NoYesMenu
+	db   "NEIN"
+	next "JA@"
+.YesNoMenu
+	db   "JA"
+	next "NEIN@"
 .TradeCancelMenu
-	db   "TRADE"
-	next "CANCEL@"
+	db   "TAUSCH"
+	next "ZURÜCK@"
 .HealCancelMenu
-	db   "HEAL"
-	next "CANCEL@"
+	db   "HEILEN"
+	next "ZURÜCK@"
 
 DisplayFieldMoveMonMenu:
 	xor a
@@ -682,20 +655,20 @@ DisplayFieldMoveMonMenu:
 	jp PlaceString
 
 FieldMoveNames:
-	db "CUT@"
-	db "FLY@"
+	db "ZERSCHNEIDER@"
+	db "FLIEGEN@"
 	db "@"
-	db "SURF@"
-	db "STRENGTH@"
-	db "FLASH@"
-	db "DIG@"
+	db "SURFER@"
+	db "STÄRKE@"
+	db "BLITZ@"
+	db "SCHAUFLER@"
 	db "TELEPORT@"
-	db "SOFTBOILED@"
+	db "WEICHEI@"
 
 PokemonMenuEntries:
-	db   "STATS"
-	next "SWITCH"
-	next "CANCEL@"
+	db   "STATUS"
+	next "TAUSCH"
+	next "ZURÜCK@"
 
 GetMonFieldMoves:
 	ld a, [wWhichPokemon]
@@ -759,9 +732,9 @@ FieldMoveDisplayData:
 	db FLY, $02, $0C
 	db $B4, $03, $0C ; unused field move
 	db SURF, $04, $0C
-	db STRENGTH, $05, $0A
+	db STRENGTH, $05, $0C
 	db FLASH, $06, $0C
 	db DIG, $07, $0C
 	db TELEPORT, $08, $0A
-	db SOFTBOILED, $09, $08
+	db SOFTBOILED, $09, $0B
 	db $ff ; list terminator

@@ -487,11 +487,11 @@ PrintStatusCondition::
 	pop de
 	jr nz,PrintStatusConditionNotFainted
 ; if the pokemon's HP is 0, print "FNT"
-	ld a,"F"
+	ld a,"B"
 	ld [hli],a
-	ld a,"N"
+	ld a,"S"
 	ld [hli],a
-	ld [hl],"T"
+	ld [hl],"G"
 	and a
 	ret
 
@@ -1267,6 +1267,17 @@ DisplayPlayerBlackedOutText::
 	ld a,[wd732]
 	res 5,a ; reset forced to use bike bit
 	ld [wd732],a
+	ld a,[wd795]
+	bit 7,a
+	jr z,.didnotblackoutinsafari
+	xor a
+	ld [wNumSafariBalls],a
+	ld [wSafariSteps],a
+	ld [wSafariSteps+1],a
+	ld [wd795],a
+	ld [wcf0d],a
+	ld [wSafariZoneEntranceCurScript],a
+.didnotblackoutinsafari
 	jp HoldTextDisplayOpen
 
 PlayerBlackedOutText::
@@ -1524,7 +1535,7 @@ DisplayListMenuIDLoop::
 	call GetPartyMonName
 .storeChosenEntry ; store the menu entry that the player chose and return
 	ld de,wcd6d
-	call CopyStringToCF4B ; copy name to wcf4b
+	call CopyStringToCF50 ; copy name to wcf50
 	ld a,CHOSE_MENU_ITEM
 	ld [wMenuExitMethod],a
 	ld a,[wCurrentMenuItem]
@@ -1660,7 +1671,7 @@ DisplayChooseQuantityMenu::
 	ld de,SpacesBetweenQuantityAndPriceText
 	call PlaceString
 	ld de,hMoney ; total price
-	ld c,$a3
+	ld c,$83
 	call PrintBCDNumber
 	coord hl, 9, 10
 .printQuantity
@@ -1785,7 +1796,7 @@ PrintListMenuEntries::
 	pop hl
 	ld bc, SCREEN_WIDTH + 5 ; 1 row down and 5 columns right
 	add hl,bc
-	ld c,$a3 ; no leading zeroes, right-aligned, print currency symbol, 3 bytes
+	ld c,$83 ; no leading zeroes, right-aligned, print currency symbol, 3 bytes
 	call PrintBCDNumber
 .skipPrintingItemPrice
 	ld a,[wListMenuID]
@@ -1890,7 +1901,7 @@ PrintListMenuEntries::
 	jp PlaceString
 
 ListMenuCancelText::
-	db "CANCEL@"
+	db "ZURÜCK@"
 
 GetMonName::
 	push hl
@@ -1998,7 +2009,7 @@ GetMachineName::
 TechnicalPrefix::
 	db "TM"
 HiddenPrefix::
-	db "HM"
+	db "VM"
 
 ; sets carry if item is HM, clears carry if item is not HM
 ; Input: a = item ID
@@ -3365,9 +3376,9 @@ GetItemPrice::
 	ld [MBC1RomBank], a
 	ret
 
-; copies a string from [de] to [wcf4b]
-CopyStringToCF4B::
-	ld hl, wcf4b
+; copies a string from [de] to [wcf50]
+CopyStringToCF50::
+	ld hl, wcf50
 	; fall through
 
 ; copies a string from [de] to [hl]
@@ -4540,7 +4551,7 @@ ReloadMapSpriteTilePatterns::
 
 GiveItem::
 ; Give player quantity c of item b,
-; and copy the item's name to wcf4b.
+; and copy the item's name to wcf50.
 ; Return carry on success.
 	ld a, b
 	ld [wd11e], a
@@ -4551,7 +4562,7 @@ GiveItem::
 	call AddItemToInventory
 	ret nc
 	call GetItemName
-	call CopyStringToCF4B
+	call CopyStringToCF50
 	scf
 	ret
 

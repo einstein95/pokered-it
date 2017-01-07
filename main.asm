@@ -174,9 +174,11 @@ BattleHudTiles3End:
 NintendoCopyrightLogoGraphics:  INCBIN "gfx/copyright.2bpp"
 GamefreakLogoGraphics:          INCBIN "gfx/gamefreak.2bpp"
 GamefreakLogoGraphicsEnd:
+Unk9Graphic:                    INCBIN "gfx/unk_9.2bpp"
+Unk9GraphicEnd:
 TextBoxGraphics:                INCBIN "gfx/text_box.2bpp"
 TextBoxGraphicsEnd:
-PokedexTileGraphics:            INCBIN "gfx/pokedex.2bpp"
+PokedexTileGraphics:            INCBIN "gfx/pokedex.2bpp",$10,$120
 PokedexTileGraphicsEnd:
 WorldMapTileGraphics:           INCBIN "gfx/town_map.2bpp"
 WorldMapTileGraphicsEnd:
@@ -1879,10 +1881,10 @@ INCLUDE "engine/battle/decrement_pp.asm"
 
 Version_GFX:
 IF DEF(_RED)
-	INCBIN "gfx/red/redgreenversion.1bpp" ; 10 tiles
+	INCBIN "gfx/red/redversion.1bpp" ; 10 tiles
 ENDC
 IF DEF(_BLUE)
-	INCBIN "gfx/blue/blueversion.1bpp" ; 8 tiles
+	INCBIN "gfx/blue/blueversion.1bpp" ; 10 tiles
 ENDC
 Version_GFXEnd:
 

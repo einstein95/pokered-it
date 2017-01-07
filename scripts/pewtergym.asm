@@ -17,10 +17,10 @@ PewterGymScript_5c3a4:
 	jp LoadGymLeaderAndCityName
 
 Gym1CityName:
-	db "PEWTER CITY@"
+	db "MARMORIA CITY@"
 
 Gym1LeaderName:
-	db "BROCK@"
+	db "ROCKO@"
 
 PewterGymScript_5c3bf:
 	xor a

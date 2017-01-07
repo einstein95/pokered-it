@@ -1,96 +1,114 @@
 _CopycatsHouse2FText_5ccd4::
-	text $52, ": Hi! Do"
-	line "you like #MON?"
+	text "<PLAYER>: Hallo!"
+	line "Magst Du #MON?"
 
-	para $52, ": Uh no, I"
-	line "just asked you."
+	para "<PLAYER>: Halt,"
+	line "ich habe doch"
+	cont "Dich gefragt."
 
-	para $52, ": Huh?"
-	line "You're strange!"
+	para "<PLAYER>: Wie?"
+	line "Du bist komisch!"
 
-	para "COPYCAT: Hmm?"
-	line "Quit mimicking?"
+	para "NACHAHMERIN: Hmm?"
+	line "Ich soll die"
+	cont "Nachahmerei"
+	cont "aufgeben?"
 
-	para "But, that's my"
-	line "favorite hobby!"
+	para "Aber das ist"
+	line "doch mein Hobby!"
 	prompt
 
 _TM31PreReceiveText::
-	text "Oh wow!"
-	line "A # DOLL!"
+	text "Wow! Das ist ja"
+	line "eine #PUPPE!"
 
-	para "For me?"
-	line "Thank you!"
+	para "Die ist für mich?"
+	line "Vielen Dank!"
 
-	para "You can have"
-	line "this, then!"
+	para "Ich gebe Dir das"
+	line "hier dafür!"
 	prompt
 
 _ReceivedTM31Text::
-	text $52, " received"
+	text "<PLAYER> erhält"
 	line "@"
-	TX_RAM wcf4b
+	TX_RAM wcf50
 	text "!@@"
 
 _TM31ExplanationText1::
-	db $0
-	para "TM31 contains my"
-	line "favorite, MIMIC!"
+	text ""
 
-	para "Use it on a good"
+	para "TM31 ist meine"
+	line "Lieblings-TM,"
+	cont "MIMIKRY!"
+
+	para "Gib sie einem"
 	line "#MON!@@"
 
 _TM31ExplanationText2::
-	text $52, ": Hi!"
-	line "Thanks for TM31!"
+	text "<PLAYER>: Hallo!"
+	line "Vielen Dank für"
+	cont "die TM31!"
 
-	para $52, ": Pardon?"
+	para "<PLAYER>:"
+	line "Sag mal..."
 
-	para $52, ": Is it"
-	line "that fun to mimic"
-	cont "my every move?"
+	para "<PLAYER>:"
+	line "...macht es Dir"
+	cont "wirklich so"
+	cont "viel Spaß, mich"
+	cont "nachzuahmen?"
 
-	para "COPYCAT: You bet!"
-	line "It's a scream!"
+	para "NACHAHMERIN:"
+	line "Darauf kannst Du"
+	cont "wetten! Es ist"
+	cont "ein Brüller!"
 	done
 
 _TM31NoRoomText::
-	text "Don't you want"
-	line "this?@@"
+	text "Möchtest Du dies"
+	line "hier nicht haben?@@"
 
 _CopycatsHouse2FText2::
-	text "DODUO: Giiih!"
+	text "DODU: Giegie!"
 
-	para "MIRROR MIRROR ON"
-	line "THE WALL, WHO IS"
-	cont "THE FAIREST ONE"
-	cont "OF ALL?"
+	para "SPIEGLEIN,"
+	line "SPIEGLEIN AN DER"
+	cont "WAND, WER IST DIE"
+	cont "SCHÖNSTE IM"
+	cont "GANZEN LAND?"
 	done
 
 _CopycatsHouse2FText3::
-	text "This is a rare"
-	line "#MON! Huh?"
-	cont "It's only a doll!"
+	text "Ein seltenes"
+	line "#MON! Hmm?"
+	cont "Es ist nur eine"
+	cont "Puppe!"
 	done
 
 _CopycatsHouse2FText6::
-	text "A game with MARIO"
-	line "wearing a bucket"
-	cont "on his head!"
+	text "Ein Spiel mit"
+	line "MARIO!"
 	done
 
 _CopycatsHouse2FText_5cd17::
 	text "..."
 
-	para "My Secrets!"
+	para "Meine"
+	line "Geheimnisse!"
 
-	para "Skill: Mimicry!"
-	line "Hobby: Collecting"
-	cont "dolls!"
-	cont "Favorite #MON:"
-	cont "CLEFAIRY!"
+	para "Zeitvertreib:"
+	line "Mienenspiel"
+
+	para "Hobby:"
+	line "Puppen sammeln"
+
+	para "Lieblings-"
+	line "#MON: PIEPI!"
 	done
 
 _CopycatsHouse2FText_5cd1c::
-	text "Huh? Can't see!"
+	text "Hmm? Aber hier"
+	cont "ist doch gar "
+	cont "nichts?!"
 	done

@@ -1017,8 +1017,8 @@ Audio2_21e8b:
 	jr z, .asm_21e9a
 	jr c, .asm_21e9d
 .asm_21e9a
-	scf
-	ccf
+	ld a, [wLowHealthAlarm]
+	rla
 	ret
 .asm_21e9d
 	scf

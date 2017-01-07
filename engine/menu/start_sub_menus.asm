@@ -347,7 +347,7 @@ StartMenu_Item:
 	ld hl,wTopMenuItemY
 	ld a,11
 	ld [hli],a ; top menu item Y
-	ld a,14
+	ld a,13
 	ld [hli],a ; top menu item X
 	xor a
 	ld [hli],a ; current menu item ID
@@ -367,7 +367,7 @@ StartMenu_Item:
 	ld a,[wcf91]
 	ld [wd11e],a
 	call GetItemName
-	call CopyStringToCF4B ; copy name to wcf4b
+	call CopyStringToCF50 ; copy name to wcf50
 	ld a,[wcf91]
 	cp a,BICYCLE
 	jr nz,.notBicycle2
@@ -598,8 +598,9 @@ DrawTrainerInfo:
 	call PlaceString
 	coord hl, 8, 4
 	ld de,wPlayerMoney
-	ld c,$e3
+	ld c,$c3
 	call PrintBCDNumber
+	ld [hl],$f0
 	coord hl, 9, 6
 	ld de,wPlayTimeHours ; hours
 	lb bc, LEFT_ALIGN | 1, 3
@@ -615,9 +616,9 @@ TrainerInfo_FarCopyData:
 	jp FarCopyData2
 
 TrainerInfo_NameMoneyTimeText:
-	db   "NAME/"
-	next "MONEY/"
-	next "TIME/@"
+	db   "NOM/"
+	next "ARG./"
+	next "TEMPS/@"
 
 ; $76 is a circle tile
 TrainerInfo_BadgesText:

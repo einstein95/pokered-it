@@ -1,60 +1,67 @@
 _Route12HouseText_564c0::
-	text "I'm the FISHING"
-	line "GURU's brother!"
+	text "Mein Bruder ist"
+	line "der PROFI-ANGLER!"
 
-	para "I simply Looove"
-	line "fishing!"
+	para "Ich liebe den"
+	line "Angelsport!"
 
-	para "Do you like to"
-	line "fish?"
+	para "Möchtest Du auch"
+	line "angeln?"
 	done
 
 _Route12HouseText_564c5::
-	text "Grand! I like"
-	line "your style!"
+	text "Cool! Du bist mir"
+	line "sympathisch!"
 
-	para "Take this and"
-	line "fish, young one!"
+	para "Nimm das hier und"
+	line "genieße das"
+	cont "Anglerleben!"
 
-	para $52, " received"
-	line "a @"
-	TX_RAM wcf4b
+	para "<PLAYER> erhält"
+	line "eine @"
+	TX_RAM wcf50
 	text "!@@"
 
 _Route12HouseText_564ca::
-	db $0
-	para "Fishing is a way"
-	line "of life!"
+	text ""
 
-	para "From the seas to"
-	line "rivers, go out"
-	cont "and land the big"
-	cont "one!"
+	para "Angeln ist nicht"
+	line "nur ein Sport, es"
+	cont "ist eine Kunst!"
+
+	para "Nun ziehe los,"
+	line "um den großen"
+	cont "Fang zu landen!"
 	done
 
 _Route12HouseText_564cf::
-	text "Oh... That's so"
-	line "disappointing..."
+	text "Oh! Das ist so"
+	line "enttäuschend..."
 	done
 
 _Route12HouseText_564d4::
-	text "Hello there,"
-	line $52, "!"
+	text "Hallo,"
+	line "<PLAYER>!"
 
-	para "Use the SUPER ROD"
-	line "in any water!"
-	cont "You can catch"
-	cont "different kinds"
-	cont "of #MON."
+	para "Benutze die"
+	line "SUPERANGEL in"
+	cont "allen Gewässern."
+	cont "Du kannst die"
+	cont "verschiedensten"
+	cont "#MON damit"
+	cont "fangen!"
 
-	para "Try fishing"
-	line "wherever you can!"
+	para "Gehe angeln, wann"
+	line "immer die Zeit es"
+	cont "erlaubt!"
 	done
 
 _Route12HouseText_564d9::
-	text "Oh no!"
+	text "Oh nein!"
 
-	para "I had a gift for"
-	line "you, but you have"
-	cont "no room for it!"
+	para "Ich habe ein"
+	line "Geschenk für"
+	cont "Dich! Aber Du"
+	cont "kannst nichts"
+	cont "mehr tragen!"
 	done

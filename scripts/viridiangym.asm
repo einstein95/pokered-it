@@ -11,7 +11,7 @@ ViridianGymScript:
 	ret
 
 Gym8CityName:
-	db "VIRIDIAN CITY@"
+	db "VERTANIA CITY@"
 Gym8LeaderName:
 	db "GIOVANNI@"
 
