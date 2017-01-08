@@ -58,10 +58,7 @@ PredefPointers::
 	add_predef ScaleSpriteByTwo
 	add_predef LoadMonBackPic
 	add_predef CopyDownscaledMonTiles
-;	add_predef LoadMissableObjects
-;	For some reason this points to the middle of the "ld de, wMissableObjectList" instruction in LoadMissableObjects
-	db 3
-	dw $714D
+	dbw $03,JumpMoveEffect ; wrong bank
 	add_predef HealParty
 	add_predef MoveAnimation
 	add_predef DivideBCDPredef
