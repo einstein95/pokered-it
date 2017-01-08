@@ -12,14 +12,16 @@ EndOfBattle:
 	call ClearScreen
 	callab DisplayLinkBattleVersusTextBox
 	ld a, [wBattleResult]
-	cp $1
+	cp 1
 	ld de, YouWinText
 	jr c, .placeWinOrLoseString
 	ld de, YouLoseText
 	jr z, .placeWinOrLoseString
 	ld de, DrawText
-.placeWinOrLoseString
 	coord hl, 6, 8
+	jr .placeWinOrLoseString
+	coord hl, 6, 8
+.placeWinOrLoseString
 	call PlaceString
 	ld c, 200
 	call DelayFrames
@@ -75,13 +77,13 @@ EndOfBattle:
 	ret
 
 YouWinText:
-	db "  GAGNE@"
+	db "GEWONNEN@"
 
 YouLoseText:
-	db "  PERDU@"
+	db "VERLOREN@"
 
 DrawText:
-	db "MATCH NUL@"
+	db "UNENTSCHIEDEN@"
 
 PickUpPayDayMoneyText:
 	TX_FAR _PickUpPayDayMoneyText

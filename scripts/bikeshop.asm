@@ -79,11 +79,11 @@ BikeShopText1:
 	jp TextScriptEnd
 
 BikeShopMenuText:
-	db   "BICYCLETTE"
-	next "RETOUR@"
+	db   "FAHRRAD"
+	next "ZURÜCK@"
 
 BikeShopMenuPrice:
-	db "1000000¥@"
+	db "¥1000000@"
 
 BikeShopText_1d810:
 	TX_FAR _BikeShopText_1d810

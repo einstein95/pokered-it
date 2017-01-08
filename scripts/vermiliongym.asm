@@ -22,7 +22,7 @@ VermilionGymScript_5ca4c:
 	jp LoadGymLeaderAndCityName
 
 Gym3CityName:
-	db "CARMIN SUR MER@"
+	db "ORANIA CITY@"
 
 Gym3LeaderName:
 	db "MAJOR BOB@"

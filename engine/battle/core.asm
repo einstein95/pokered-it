@@ -2967,7 +2967,7 @@ PrintMenuItem:
 	call PlaceString
 	coord hl, 7, 11
 	ld [hl], "/"
-	coord hl, 5, 9
+	coord hl, 4, 9
 	ld [hl], "/"
 	coord hl, 5, 11
 	ld de, wcd6d
@@ -6907,19 +6907,15 @@ InitWildBattle:
 	ld [hli], a   ; write front sprite pointer
 	ld [hl], b
 	ld hl, wEnemyMonNick  ; set name to "GHOST"
+	ld a, "G"
+	ld [hli], a
+	ld a, "E"
+	ld [hli], a
+	ld a, "I"
+	ld [hli], a
 	ld a, "S"
 	ld [hli], a
-	ld a, "P"
-	ld [hli], a
-	ld a, "E"
-	ld [hli], a
-	ld a, "C"
-	ld [hli], a
 	ld a, "T"
-	ld [hli], a
-	ld a, "R"
-	ld [hli], a
-	ld a, "E"
 	ld [hli], a
 	ld [hl], "@"
 	ld a, [wcf91]
@@ -7963,12 +7959,12 @@ PrintStatText:
 	jp CopyData
 
 StatsTextStrings:
-	db "FOR@"
-	db "DEF@"
-	db "VIT@"
-	db "SPE@"
-	db "PRE@"
-	db "ESQ@"
+	db "ANGR@"
+	db "VERT@"
+	db "INIT@"
+	db "SPEZ@"
+	db "GENA@"
+	db "FLU@"
 
 StatModifierRatios:
 ; first byte is numerator, second byte is denominator

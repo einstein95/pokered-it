@@ -69,44 +69,44 @@ TrainerNamePointers:
 	dw wTrainerName
 
 YoungsterName:
-	db "GAMIN@"
+	db "TEENAGER@"
 BugCatcherName:
-	db "SCOUT@"
+	db "KÄFERSAMMLER@"
 LassName:
-	db "FILLETTE@"
+	db "GÖRE@"
 JrTrainerMName:
-	db "DRESSEUR JR♂@"
+	db "PFADFINDER@"
 JrTrainerFName:
-	db "DRESSEUR JR♀@"
+	db "PFADFINDERIN@"
 PokemaniacName:
 	db "#MANIAC@"
 SuperNerdName:
-	db "INTELLO@"
+	db "STREBER@"
 BurglarName:
-	db "PILLARD@"
+	db "DIEB@"
 EngineerName:
-	db "MECANO@"
+	db "MECHANIKER@"
 JugglerXName:
 	db "JONGLEUR@"
 SwimmerName:
-	db "NAGEUR@"
+	db "SCHWIMMER@"
 BeautyName:
-	db "CANON@"
+	db "SCHÖNHEIT@"
 RockerName:
 	db "ROCKER@"
 JugglerName:
 	db "JONGLEUR@"
 BlackbeltName:
-	db "KARATEKA@"
+	db "SCHWARZGURT@"
 ProfOakName:
-	db "PROF.CHEN@"
+	db "PROF.EICH@"
 ChiefName:
 	db "CHIEF@"
 ScientistName:
-	db "SCIENTIFIQUE@"
+	db "FORSCHER@"
 RocketName:
 	db "ROCKET@"
 CooltrainerMName:
-	db "TOPDRESSEUR♂@"
+	db "TRAINER@"
 CooltrainerFName:
-	db "TOPDRESSEUR♀@"
+	db "TRAINERIN@"

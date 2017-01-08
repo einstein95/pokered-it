@@ -369,10 +369,10 @@ PrintAlphabet:
 	jp Delay3
 
 LowerCaseAlphabet:
-	db "abcdefghijklmnopqrstuvwxyz ×():;[]",$e1,$e2,"-?!♂♀/⠄,¥MAJUSCULES@"
+	db "abcdefghijklmnopqrstuvwxyz äöü:×()",$e1,$e2,"-?!♂♀/⠄,¥GROSSBUCHSTABEN@"
 
 UpperCaseAlphabet:
-	db "ABCDEFGHIJKLMNOPQRSTUVWXYZ ×():;[]",$e1,$e2,"-?!♂♀/⠄,¥minuscules@"
+	db "ABCDEFGHIJKLMNOPQRSTUVWXYZ ÄÖÜ:;[]",$e1,$e2,"-?!♂♀/⠄,¥kleinbuchstaben@"
 
 PrintNicknameAndUnderscores:
 	call CalcStringLength
@@ -475,10 +475,10 @@ PrintNamingText:
 	ld a, [wNamingScreenType]
 	ld de, YourTextString
 	and a
-	jr z, .placeString
+	jr z, .notNickname
 	ld de, RivalsTextString
 	dec a
-	jr z, .placeString
+	jr z, .notNickname
 	ld a, [wcf91]
 	ld [wMonPartySpriteSpecies], a
 	push af
@@ -488,21 +488,25 @@ PrintNamingText:
 	call GetMonName
 	coord hl, 4, 1
 	call PlaceString
-	ld hl, $C3DD
-	ld de, $69F2
+	coord hl, 1, 3
+	ld de, NicknameTextString
 	jr .placeString
-
+.notNickname
+	call PlaceString
+	ld l, c
+	ld h, b
+	ld de, NameTextString
 .placeString
 	jp PlaceString
 
 YourTextString:
-	db "VOTRE NOM?@"
+	db "DEIN @"
 
 RivalsTextString:
-	db "NOM DU RIVAL?@"
+	db "GEGNER-@"
 
 NameTextString:
-	db "NOM?@"
+	db "NAME?@"
 
 NicknameTextString:
-	db "SURNOM?@"
+	db "ALIAS?@"

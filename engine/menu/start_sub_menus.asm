@@ -600,7 +600,6 @@ DrawTrainerInfo:
 	ld de,wPlayerMoney
 	ld c,$c3
 	call PrintBCDNumber
-	ld [hl],$f0
 	coord hl, 9, 6
 	ld de,wPlayTimeHours ; hours
 	lb bc, LEFT_ALIGN | 1, 3
@@ -616,13 +615,13 @@ TrainerInfo_FarCopyData:
 	jp FarCopyData2
 
 TrainerInfo_NameMoneyTimeText:
-	db   "NOM/"
-	next "ARG./"
-	next "TEMPS/@"
+	db   "NAME/"
+	next "GELD/"
+	next "ZEIT/@"
 
 ; $76 is a circle tile
 TrainerInfo_BadgesText:
-	db $76,"BADGES",$76,"@"
+	db $76,"ORDEN",$76,"@"
 
 ; draws a text box on the trainer info screen
 ; height is always 6

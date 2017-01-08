@@ -825,8 +825,8 @@ ItemUseMedicine:
 	ld [wActionResultOrTookBattleTurn],a ; item use failed
 	jp PrintText
 .emptyPartyText
-	text "Vous n'avez pas"
-	line "de #MON!"
+	text "Du besitzt noch"
+	line "keine #MON!"
 	prompt
 .notUsingSoftboiled
 	call DisplayPartyMenu
@@ -1425,11 +1425,11 @@ VitaminNoEffectText:
 	db "@"
 
 VitaminText:
-	db "VIE@"
-	db "FOR@"
-	db "DEF@"
-	db "VIT@"
-	db "SPE@"
+	db "GESU@"
+	db "ANGR@"
+	db "VERT@"
+	db "INIT@"
+	db "SPEZ@"
 
 ItemUseBait:
 	ld hl,ThrewBaitText

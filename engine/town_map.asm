@@ -118,9 +118,8 @@ LoadTownMap_Nest:
 	push hl
 	call DisplayWildLocations
 	call GetMonName
-	coord hl, 8, 0
+	coord hl, 1, 0
 	call PlaceString
-;	coord hl, 1, 0
 	ld h, b
 	ld l, c
 	ld de, MonsNestText

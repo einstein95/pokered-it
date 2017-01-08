@@ -12,7 +12,7 @@ DisplayLinkBattleVersusTextBox:
 	ld de, wLinkEnemyTrainerName
 	call PlaceString
 ; place bold "VS" tiles between the names
-	coord hl, 7, 8
+	coord hl, 9, 8
 	ld a, "V"
 	ldi [hl], a
 	ld [hl], "S"

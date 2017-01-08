@@ -33,7 +33,7 @@ DisplayDiploma:
 	pop bc
 	dec c
 	jr nz, .asm_56715
-	coord hl, 10, 4
+	coord hl, 9, 6
 	ld de, wPlayerName
 	call PlaceString
 	callba DrawPlayerCharacter

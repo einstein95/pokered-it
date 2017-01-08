@@ -329,16 +329,16 @@ SpecialEnterMap:
 	jp EnterMap
 
 ContinueText:
-	db "CONTINUER", $4e
+	db "WEITER", $4e
 
 NewGameText:
-	db   "NOUVEAU JEU"
-	next "OPTIONS@"
+	db   "NEUES SPIEL"
+	next "OPTIONEN@"
 
 CableClubOptionsText:
-	db   "CENTRE TROC"
-	next "COLISEE"
-	next "RETOUR@"
+	db   "HANDELSCENTER"
+	next "KOLOSSEUM"
+	next "ZURÜCK@"
 
 DisplayContinueGameInfo:
 	xor a
@@ -421,10 +421,10 @@ PrintPlayTime:
 	jp PrintNumber
 
 SaveScreenInfoText:
-	db   "JOUEUR"
-	next "BADGES        "
-	next "#DEX       "
-	next "TEMPS@"
+	db   "SPIELER"
+	next "ORDEN          "
+	next "#DEX        "
+	next "ZEIT@"
 
 DisplayOptionMenu:
 	coord hl, 0, 0
@@ -579,19 +579,19 @@ DisplayOptionMenu:
 	jp .eraseOldMenuCursor
 
 TextSpeedOptionText:
-	db   "VIT. TEXTE"
+	db   "TEXT-TEMPO"
 	next " 3     2      1   @"
 
 BattleAnimationOptionText:
-	db   "ANIMATION COMBAT"
-	next " OUI      NON@"
+	db   "KAMPFANIMATION"
+	next " AN       AUS@"
 
 BattleStyleOptionText:
-	db   "STYLE COMBAT"
-	next " CHOIX    DEFINI@"
+	db   "KAMPFSTIL"
+	next " WECHSEL  FOLGEND@"
 
 OptionMenuCancelText:
-	db "RETOUR@"
+	db "ZURÜCK@"
 
 ; sets the options variable according to the current placement of the menu cursors in the options menu
 SetOptionsFromCursorPositions:

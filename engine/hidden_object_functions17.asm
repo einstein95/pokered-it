@@ -111,7 +111,7 @@ LinkCableHelp:
 	set 6, [hl]
 	coord hl, 0, 0
 	ld b, 8
-	ld c, 13
+	ld c, 14
 	call TextBoxBorder
 	coord hl, 2, 2
 	ld de, HowToLinkText
@@ -151,10 +151,10 @@ LinkCableHelpText2:
 	db "@"
 
 HowToLinkText:
-	db   "CABLE LINK"
-	next "COLISEE"
-	next "CENTRE TROC"
-	next "NE PLUS LIRE@"
+	db   "LINK-INFO"
+	next "KOLOSSEUM"
+	next "HANDELSCENTER"
+	next "VERLASSEN@"
 
 LinkCableInfoTexts:
 	dw LinkCableInfoText1
@@ -268,14 +268,14 @@ ViridianSchoolBlackboardText2:
 	db "@"
 
 StatusAilmentText1:
-	db   " SOM"
-	next " PSN"
+	db   " SLF"
+	next " GIF"
 	next " PAR@"
 
 StatusAilmentText2:
-	db   " BRU"
-	next " GEL"
-	next " RET@"
+	db   " BRT"
+	next " GFR"
+	next " ZUR.@"
 
 ViridianBlackboardStatusPointers:
 	dw ViridianBlackboardSleepText
