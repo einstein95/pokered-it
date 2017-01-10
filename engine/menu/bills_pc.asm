@@ -146,9 +146,9 @@ BillsPCMenu:
 	ld [wPlayerMonNumber], a
 	ld hl, WhatText
 	call PrintText
-	coord hl, 11, 14
+	coord hl, 9, 14
 	ld b, 2
-	ld c, 7
+	ld c, 9
 	call TextBoxBorder
 	ld a, [wCurrentBoxNum]
 	and $7f
@@ -164,7 +164,7 @@ BillsPCMenu:
 	add "1"
 .next
 	Coorda 18, 16
-	coord hl, 12, 16
+	coord hl, 10, 16
 	ld de, BoxNoPCText
 	call PlaceString
 	ld a, 1
@@ -385,9 +385,9 @@ HMMoveArray:
 	db -1
 
 DisplayDepositWithdrawMenu:
-	coord hl, 9, 10
+	coord hl, 8, 10
 	ld b, 6
-	ld c, 9
+	ld c, 10
 	call TextBoxBorder
 	ld a, [wParentMenuItem]
 	and a ; was the Deposit or Withdraw item selected in the parent menu?
@@ -395,15 +395,15 @@ DisplayDepositWithdrawMenu:
 	jr nz, .next
 	ld de, WithdrawPCText
 .next
-	coord hl, 11, 12
+	coord hl, 10, 12
 	call PlaceString
-	coord hl, 11, 14
+	coord hl, 10, 14
 	ld de, StatsCancelPCText
 	call PlaceString
 	ld hl, wTopMenuItemY
 	ld a, 12
 	ld [hli], a ; wTopMenuItemY
-	ld a, 10
+	ld a, 9
 	ld [hli], a ; wTopMenuItemX
 	xor a
 	ld [hli], a ; wCurrentMenuItem

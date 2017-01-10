@@ -347,7 +347,7 @@ StartMenu_Item:
 	ld hl,wTopMenuItemY
 	ld a,11
 	ld [hli],a ; top menu item Y
-	ld a,13
+	ld a,14
 	ld [hli],a ; top menu item X
 	xor a
 	ld [hli],a ; current menu item ID
@@ -598,7 +598,7 @@ DrawTrainerInfo:
 	call PlaceString
 	coord hl, 8, 4
 	ld de,wPlayerMoney
-	ld c,$c3
+	ld c,$e3
 	call PrintBCDNumber
 	coord hl, 9, 6
 	ld de,wPlayTimeHours ; hours

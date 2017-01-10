@@ -328,8 +328,8 @@ StatusScreen2:
 	ld b, a ; Number of moves ?
 	coord hl, 11, 10
 	ld de, SCREEN_WIDTH * 2
-	ld a, $8F ; special P tile id
-	call StatusScreen_PrintPP ; Print "PP"
+	ld a, $80 ; special P tile id
+	call StatusScreen_PrintAP ; Print "AP"
 	ld a, b
 	and a
 	jr z, .InitPP
@@ -480,12 +480,12 @@ StatusScreen_PrintPP:
 	jr nz, StatusScreen_PrintPP
 	ret
 
-func_6cd5: ; 12cd5 (4:6cd5)
-	ld a, $80
+StatusScreen_PrintAP: ; 12cd5 (4:6cd5)
+	ld a, "A"
 	ld [hli],a
-	ld a, $8F
+	ld a, "P"
 	ldd [hl], a
 	add hl, de
 	dec c
-	jr nz, func_6cd5
+	jr nz, StatusScreen_PrintAP
 	ret

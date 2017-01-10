@@ -199,11 +199,11 @@ MonsterNameCharsCommon::
 
 .Enemy
 	; print “Enemy ”
-	ld de,wEnemyMonNick
+	ld de,Char5AText
 	call PlaceString
 	ld h,b
 	ld l,c
-	ld de,Char5AText
+	ld de,wEnemyMonNick
 
 FinishDTE::
 	call PlaceString

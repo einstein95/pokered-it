@@ -14,12 +14,13 @@ EndOfBattle:
 	ld a, [wBattleResult]
 	cp 1
 	ld de, YouWinText
-	jr c, .placeWinOrLoseString
+	jr c, .unk
 	ld de, YouLoseText
-	jr z, .placeWinOrLoseString
+	jr z, .unk
 	ld de, DrawText
-	coord hl, 6, 8
+	coord hl, 4, 8
 	jr .placeWinOrLoseString
+.unk
 	coord hl, 6, 8
 .placeWinOrLoseString
 	call PlaceString

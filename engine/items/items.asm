@@ -2221,8 +2221,8 @@ ItemUseTMHM:
 	call PrintText
 	ld hl,TeachMachineMoveText
 	call PrintText
-	coord hl, 14, 7
-	lb bc, 8, 15
+	coord hl, 13, 7
+	lb bc, 8, 14
 	ld a,TWO_OPTION_MENU
 	ld [wTextBoxID],a
 	call DisplayTextBoxID ; yes/no menu
@@ -2607,8 +2607,8 @@ TossItem_:
 	call CopyStringToCF50 ; copy name to wcf50
 	ld hl,IsItOKToTossItemText
 	call PrintText
-	coord hl, 14, 7
-	lb bc, 8, 15
+	coord hl, 13, 7
+	lb bc, 8, 14
 	ld a,TWO_OPTION_MENU
 	ld [wTextBoxID],a
 	call DisplayTextBoxID ; yes/no menu
