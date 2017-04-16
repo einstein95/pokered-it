@@ -166,9 +166,9 @@ TextBoxTextAndCoordTable:
 	db 3,0   ; text coordinates
 
 	db USE_TOSS_MENU_TEMPLATE
-	db 12,10,19,14 ; text box coordinates
+	db 13,10,19,14 ; text box coordinates
 	dw UseTossText
-	db 14,11 ; text coordinates
+	db 15,11 ; text coordinates
 
 	db JP_SAVE_MESSAGE_MENU_TEMPLATE
 	db 0,0,7,5     ; text box coordinates
