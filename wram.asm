@@ -1610,7 +1610,7 @@ wEnemyMonMaxHP::     dw
 wEnemyMonAttack::    dw
 wEnemyMonDefense::   dw
 wEnemyMonSpeed::     ds 1
-SECTION "WRAM Bank 1", WRAMX, BANK[1]
+SECTION "WRAM Bank 1", WRAMX[$d000], BANK[1]
                      ds 1
 wEnemyMonSpecial::   dw
 wEnemyMonPP::        ds 2 ; NUM_MOVES - 2
