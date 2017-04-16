@@ -60,7 +60,7 @@ battle_struct: MACRO
 ENDM
 
 
-SECTION "WRAM Bank 0", WRAM0
+SECTION "WRAM Bank 0", WRAM0 [$c000]
 
 wUnusedC000:: ; c000
 	ds 1
@@ -1416,7 +1416,7 @@ wStatusScreenHPBarColor:: ; cf25
 
 	ds 7
 
-wCopyingSGBTileData:: ; c2fd
+wCopyingSGBTileData:: ; cf2d
 
 wWhichPartyMenuHPBar:: ; cf2d
 
