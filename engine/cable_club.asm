@@ -712,8 +712,8 @@ TradeCenter_Trade:
 	coord bc, 1, 14
 	call TextCommandProcessor
 	call SaveScreenTilesToBuffer1
-	coord hl, 9, 7
-	lb bc, 8, 10
+	coord hl, 10, 7
+	lb bc, 8, 11
 	ld a, TRADE_CANCEL_MENU
 	ld [wTwoOptionMenuID], a
 	ld a, TWO_OPTION_MENU

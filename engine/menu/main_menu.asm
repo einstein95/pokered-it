@@ -141,12 +141,12 @@ LinkMenu:
 	call SaveScreenTilesToBuffer1
 	ld hl, WhereWouldYouLikeText
 	call PrintText
-	coord hl, 5, 5
+	coord hl, 4, 5
 	ld b, $6
-	ld c, $d
+	ld c, $e
 	call TextBoxBorder
 	call UpdateSprites
-	coord hl, 7, 7
+	coord hl, 6, 7
 	ld de, CableClubOptionsText
 	call PlaceString
 	xor a
@@ -155,7 +155,7 @@ LinkMenu:
 	ld hl, wTopMenuItemY
 	ld a, $7
 	ld [hli], a
-	ld a, $6
+	ld a, $5
 	ld [hli], a
 	xor a
 	ld [hli], a
