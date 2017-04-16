@@ -454,7 +454,7 @@ DisplayTwoOptionMenu:
 
 TwoOptionMenu_SaveScreenTiles:
 	ld de, wBuffer
-	lb bc, 5, 6
+	lb bc, 5, 7
 .loop
 	ld a, [hli]
 	ld [de], a
@@ -462,17 +462,17 @@ TwoOptionMenu_SaveScreenTiles:
 	dec c
 	jr nz, .loop
 	push bc
-	ld bc, SCREEN_WIDTH - 6
+	ld bc, SCREEN_WIDTH - 7
 	add hl, bc
 	pop bc
-	ld c, $6
+	ld c, $7
 	dec b
 	jr nz, .loop
 	ret
 
 TwoOptionMenu_RestoreScreenTiles:
 	ld de, wBuffer
-	lb bc, 5, 6
+	lb bc, 5, 7
 .loop
 	ld a, [de]
 	inc de
@@ -480,10 +480,10 @@ TwoOptionMenu_RestoreScreenTiles:
 	dec c
 	jr nz, .loop
 	push bc
-	ld bc, SCREEN_WIDTH - 6
+	ld bc, SCREEN_WIDTH - 7
 	add hl, bc
 	pop bc
-	ld c, 6
+	ld c, 7
 	dec b
 	jr nz, .loop
 	call UpdateSprites
@@ -495,7 +495,7 @@ TwoOptionMenu_RestoreScreenTiles:
 ; 02: byte put blank line before first menu item
 ; 03: word text pointer
 TwoOptionMenuStrings:
-	db 4,3,0
+	db 5,3,0
 	dw .YesNoMenu
 	db 6,3,0
 	dw .NorthWestMenu
@@ -505,11 +505,11 @@ TwoOptionMenuStrings:
 	dw .YesNoMenu
 	db 6,3,0
 	dw .NorthEastMenu
-	db 8,3,0
+	db 7,3,0
 	dw .TradeCancelMenu
 	db 7,4,1
 	dw .HealCancelMenu
-	db 4,3,0
+	db 5,3,0
 	dw .NoYesMenu
 
 .NorthWestMenu
@@ -728,13 +728,13 @@ GetMonFieldMoves:
 ; Leftmost tile = -1 + tile column in which the first letter of the move's name should be displayed
 ;                 "SOFTBOILED" is $08 because it has 4 more letters than "SURF", for example, whose value is $0C
 FieldMoveDisplayData:
-	db CUT, $01, $0C
-	db FLY, $02, $0C
+	db CUT, $01, $06
+	db FLY, $02, $0B
 	db $B4, $03, $0C ; unused field move
 	db SURF, $04, $0C
 	db STRENGTH, $05, $0C
 	db FLASH, $06, $0C
-	db DIG, $07, $0C
+	db DIG, $07, $09
 	db TELEPORT, $08, $0A
 	db SOFTBOILED, $09, $0B
 	db $ff ; list terminator

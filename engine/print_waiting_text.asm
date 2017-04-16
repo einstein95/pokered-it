@@ -1,7 +1,7 @@
 PrintWaitingText:
 	coord hl, 3, 10
 	ld b, $1
-	ld c, $b
+	ld c, $d
 	ld a, [wIsInBattle]
 	and a
 	jr z, .asm_4c17
