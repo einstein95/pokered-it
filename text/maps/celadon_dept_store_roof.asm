@@ -118,7 +118,6 @@ _CeladonMartRoofText4::
 	cont "Getränk?"
 	done
 
-
 _CeladonMartRoofText6::
 	text "DACHGARTEN:"
 	line "AUTOMATEN"

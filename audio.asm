@@ -6,29 +6,29 @@ AUDIO_3 EQU $1f
 INCLUDE "constants.asm"
 
 
-SECTION "Sound Effect Headers 1", ROMX[$4000], BANK[AUDIO_1]
+SECTION "Sound Effect Headers 1", ROMX, BANK[AUDIO_1]
 INCLUDE "audio/headers/sfxheaders1.asm"
 
-SECTION "Sound Effect Headers 2", ROMX[$4000], BANK[AUDIO_2]
+SECTION "Sound Effect Headers 2", ROMX, BANK[AUDIO_2]
 INCLUDE "audio/headers/sfxheaders2.asm"
 
-SECTION "Sound Effect Headers 3", ROMX[$4000], BANK[AUDIO_3]
+SECTION "Sound Effect Headers 3", ROMX, BANK[AUDIO_3]
 INCLUDE "audio/headers/sfxheaders3.asm"
 
 
 
-SECTION "Music Headers 1", ROMX[$422E], BANK[AUDIO_1]
+SECTION "Music Headers 1", ROMX, BANK[AUDIO_1]
 INCLUDE "audio/headers/musicheaders1.asm"
 
-SECTION "Music Headers 2", ROMX[$42BE], BANK[AUDIO_2]
+SECTION "Music Headers 2", ROMX, BANK[AUDIO_2]
 INCLUDE "audio/headers/musicheaders2.asm"
 
-SECTION "Music Headers 3", ROMX[$4249], BANK[AUDIO_3]
+SECTION "Music Headers 3", ROMX, BANK[AUDIO_3]
 INCLUDE "audio/headers/musicheaders3.asm"
 
 
 
-SECTION "Sound Effects 1", ROMX[$42FD], BANK[AUDIO_1]
+SECTION "Sound Effects 1", ROMX, BANK[AUDIO_1]
 
 INCLUDE "audio/sfx/snare1_1.asm"
 INCLUDE "audio/sfx/snare2_1.asm"
@@ -630,7 +630,7 @@ INCLUDE "audio/music/gym.asm"
 INCLUDE "audio/music/pokecenter.asm"
 
 
-SECTION "Music 2", ROMX[$632D], BANK[AUDIO_2]
+SECTION "Music 2", ROMX, BANK[AUDIO_2]
 
 INCLUDE "audio/sfx/pokeflute_ch4_ch5.asm"
 INCLUDE "audio/sfx/unused2_2.asm"
@@ -646,7 +646,7 @@ INCLUDE "audio/music/defeatedwildmon.asm"
 INCLUDE "audio/music/defeatedgymleader.asm"
 
 
-SECTION "Music 3", ROMX[$5BBB], BANK[AUDIO_3]
+SECTION "Music 3", ROMX, BANK[AUDIO_3]
 
 INCLUDE "audio/music/bikeriding.asm"
 INCLUDE "audio/music/dungeon1.asm"
